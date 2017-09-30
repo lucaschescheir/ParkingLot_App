@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: rgb(130, 159, 177);
+  font-weight: 100;
+}
+
+h3 {
+    //margin: 0px;
+    color: white;
+}
+h4 {
+    color: white;
+    //margin: 0px;
+}
+h8 {
+    color: white;
+    margin: 0px;
+}
+
+#lot_list {
+    border: 1px solid black;
+    width: 33%;
+    height: 750px;
+    margin: 20px;
+    box-shadow: 5px 5px 5px black;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(128, 151, 224);
+}
+
+#lot_overview {
+    border: 1px solid black;
+    width: 60%;
+    margin: 20px;
+    box-shadow: 5px 5px 5px black;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(128, 151, 224);
+
+}
+
+#overview_view {
+    border: 1px solid black;
+    width: 90%;
+    height: 620px;
+    align-self: center;
+    background-color: white;
+    overflow: scroll;
+    background-color: rgb(112, 112, 112);
+
+}
+
+#lot_list_view {
+    border: 3px solid black;
+    width: 90%;
+    height: 90%;
+    //margin: 20px;
+    background-color: white;
+    overflow: scroll;
+    align-self: center;
+
+}
+
+#parking_spot {
+    margin: 3px;
+    display: inline-block;
+    border-top: 3px solid yellow;
+    border-left: 3px solid yellow;
+    border-right: 3px solid yellow;
+    height: 120px;
+    width: 100px;
+}
+
+#empty {
+    margin: 3px;
+    display: inline-block;
+    border-top: 3px solid yellow;
+    border-left: 3px solid yellow;
+    border-right: 3px solid yellow;
+    height: 120px;
+    width: 100px;
+    background-image: url("/clipart-nioubiteul-7634.png");
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(112, 112, 112);
+}
+
+#parking_lot_view {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    background-color: rgb(112, 112, 112);
+}
+
+input {
+    margin-top: 5px;
+    width: 70px;
+        box-shadow: 3px 3px 3px black;
+}
+
+#parking_lot {
+    overflow: scroll;
+
+}
+
+#full_button {
+    color: white;
+    background: rgba(166, 166, 166, 0.59);
+}
+
+button {
+    color: white;
+    margin: 5px;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 5px;
+    background: rgba(40, 154, 203, 0.50);
+}
