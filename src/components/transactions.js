@@ -22,6 +22,7 @@ class Transactions extends Component {
     }
   render() {
       console.log(this.state.transactions)
+
       const transactionss = this.state.transactions.map((transaction, index)=>{
           return(
               <div key={index} id="transactions-overview">

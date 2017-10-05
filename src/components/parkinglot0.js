@@ -21,7 +21,8 @@ export default class ParkingLot extends Component {
 
         this.setState({parkingLots: [], spaces: '1'});
 
-        fetch(`https://lotbot3000.herokuapp.com/lots/${newProps.match.params.id}`).then(results => {
+        fetch(`https://lotbot3000.herokuapp.com/lots/${newProps.match.params.id}`)
+        .then(results => {
             return results.json()
         }).then(data => {
             // console.log(data)
