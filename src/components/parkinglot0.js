@@ -10,7 +10,8 @@ export default class ParkingLot extends Component {
             parkingLots: [],
             spaces: 1,
             x: false,
-            popup: true,
+            popup: false,
+            displayData: {},
         }
         // route param
     }
@@ -21,40 +22,48 @@ export default class ParkingLot extends Component {
         this.setState({parkingLots: [], spaces: '1'});
 
         fetch(`https://lotbot3000.herokuapp.com/lots/${newProps.match.params.id}`).then(results => {
-            return results.json();
+            return results.json()
         }).then(data => {
             // console.log(data)
-            this.setState({parkingLots: data});
+            this.setState({parkingLots: data})
         })
     }
     handleClick() {
         fetch(`https://lotbot3000.herokuapp.com/lots/${this.props.match.params.id}`).then(results => {
             return results.json();
         }).then(data => {
-            // console.log(data)
+             console.log(data)
             this.setState({parkingLots: data});
         })
     }
-    handlePopUp(event) {
 
-        console.log(event)
-    }
     render() {
         console.log(`Parking spots: ${this.state.parkingLots.length}`)
+        console.log(this.props.match.params.id)
         //
+        const id = parseInt(this.props.match.params.id) + 1
         const parking = this.state.parkingLots.map((parking, index) => {
             return (
                 <div key={index}>
-                    <ParkingSpot goFetch={() => this.handleClick()} index={index} id={this.props.match.params.id} cars={parking.vehicle} object={parking.transaction}/>
-                    <h3>{this.state.spaces++}</h3>
+                    <ParkingSpot goFetch={() => this.handleClick()} index={index} id={this.props.match.params.id} cars={parking.vehicle} object={parking.transaction}
+                        onUnpark={(data) => this.setState({ popup: true, displayData: data })}
+                    />
+                    <h3>{index+1}</h3>
                 </div>
             )
         })
 
+        let modal = null;
+        if (this.state.popup) {
+            modal = <PopUp accept={()=> this.setState({popup: false})}
+                theData={this.state.displayData}
+                    />;
+        }
+
         return (
             <div id="parking_lot">
-                <h1>Parking lot {this.props.match.params.id}</h1>
-
+                <h1>Parking Lot {id}</h1>
+                { modal }
                 <div id="parking_lot_view">
                     {parking}
                 </div>

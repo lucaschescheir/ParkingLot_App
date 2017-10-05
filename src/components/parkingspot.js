@@ -8,7 +8,8 @@ class ParkingSpot extends Component {
         this.state = {
             license: "",
             empty: true,
-            count: 0
+            count: 0,
+            removeCar: [],
         }
         console.log(this.props.park)
 
@@ -30,12 +31,20 @@ class ParkingSpot extends Component {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({licensePlate: null})
+            }).then(results => {
+                return results.json();
+            }).then(data => {
+                 console.log(data)
+            
+                this.props.onUnpark(data)
+
             }).then(() => {
                 this.setState({
                     license: ""
                 })
                 this.props.goFetch()
             })
+
         } else {
             console.log('added car')
             fetch(`https://lotbot3000.herokuapp.com/lots/${this.props.id}/${this.props.index}`, {
@@ -62,7 +71,7 @@ class ParkingSpot extends Component {
         } else {
             return (
                 <div id="empty">
-                    <button id="full_button" onClick={(index) => this.handleClick(index)}>Remove Car</button>
+                    <button id="full_button"  onClick={(index) => this.handleClick(index)}>Remove Car</button>
                     <h4>{this.props.cars.licensePlate}
                     </h4>
                 </div>

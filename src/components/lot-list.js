@@ -32,7 +32,7 @@ export default class LotsList extends Component {
             return (
                 <div key={this.state.spaces++} className="spot">
                     <Link to={`/parkinglot/${spot.id}`}>
-                        <h2>Parking Lot {spot.id}</h2>
+                        <h2>Parking Lot {spot.id+1}</h2>
                     </Link>
 
                 </div>
@@ -40,12 +40,14 @@ export default class LotsList extends Component {
         })
         return (
             <div id="lot_list">
-                <h1>Lot-list</h1>
+
                 <div id="lot_list_view">
+                    <h1>Lot-list</h1>
                     <ul>
                         {parking}
+                        <Link to={'/transactions'}><h2>Transactions</h2></Link>
+
                     </ul>
-                    <Link to={'/transactions'}>Transactions</Link>
                 </div>
             </div>
         );
